@@ -517,32 +517,99 @@ class Render(object):
       elif(temp == 3):
         return color(197,201,202)
 
-    #color 11 - oranges 
+    #color 11 - oranges POST
     elif(y_args > (-0.03 + random.uniform(0,0.03)) and y_args < (0.7 + random.uniform(0,0.02))):
       temp = random.randint(0,3)
       if(temp == 0):
-        return color(248,200,156) 
+        return color(236,172,107) 
       elif(temp == 1):
         return color(219,175,126)
       elif(temp == 2):
         return color(189,153,127)
       elif(temp == 3):
-        return color(217,162,129)
+        return color(219,138,105) 
 
     #color 12 - reds
     elif(y_args > (-0.2 + random.uniform(0,0.01)) and y_args < (-0.02 + random.uniform(0,0.02))):
       temp = random.randint(0,3)
+      colorTemp = color(0,0,0)
+
       if(temp == 0):
-        return color(219,138,105) 
+        colorTemp = color(219,138,105) 
       elif(temp == 1):
-        return color(207,174,146)
+        colorTemp = color(207,174,146)
       elif(temp == 2):
-        return color(189,153,127)
+        colorTemp = color(189,153,127)
       elif(temp == 3):
-        return color(217,162,129)
+        colorTemp = color(217,162,129)
+
+      if(x_args < (0.2 + random.uniform(0,0.03)) and x_args > (0 + random.uniform(0,0.03)) and y_args > (-0.20 + random.uniform(0,0.03)) and y_args < (-0.15 + random.uniform(0,0.03))):
+        temp = random.randint(0,3)
+        if(temp == 0):
+          colorTemp = color(210,119,71) 
+        elif(temp == 1):
+          colorTemp = color(240,126,82)
+        elif(temp == 2):
+          colorTemp = color(181,78,38)
+        elif(temp == 3):
+          colorTemp =  color(217,162,129)
+
+      return colorTemp
 
      #color 13 - whites
     elif(y_args > (-0.27 + random.uniform(0,0.01)) and y_args < (-0.19 + random.uniform(0,0.03))):
+      temp = random.randint(0,3)
+      colorTemp = color(0,0,0)
+
+      if(temp == 0):
+        colorTemp = color(190,194,196) 
+      elif(temp == 1):
+        colorTemp = color(209,195,178)
+      elif(temp == 2):
+        colorTemp = color(195,199,201)
+      elif(temp == 3):
+        colorTemp = color(197,201,202)
+
+      if(x_args < (0.2 + random.uniform(0,0.03)) and x_args > (0 + random.uniform(0,0.03)) and y_args > (-0.23 + random.uniform(0,0.03)) and y_args < (-0.19 + random.uniform(0,0.03))):
+        temp = random.randint(0,3)
+        if(temp == 0):
+          colorTemp = color(210,119,71) 
+        elif(temp == 1):
+          colorTemp = color(240,126,82)
+        elif(temp == 2):
+          colorTemp = color(181,78,38)
+        elif(temp == 3):
+          colorTemp =  color(217,162,129)
+
+      return colorTemp
+
+    #color 14 orange
+    elif(y_args > (-0.31 + random.uniform(0,0.01)) and y_args < (-0.26 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(139,130,106) 
+      elif(temp == 1):
+        return color(158,137,116)
+      elif(temp == 2):
+        return color(169,133,107)
+      elif(temp == 3):
+        return color(155,109,91)
+      
+
+    #color 14 beige
+    elif(y_args > (-0.38 + random.uniform(0,0.01)) and y_args < (-0.30 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(149,130,106) 
+      elif(temp == 1):
+        return color(168,137,116)
+      elif(temp == 2):
+        return color(143,120,102)
+      elif(temp == 3):
+        return color(142,122,95)
+
+    #color 15 - whites
+    elif(y_args > (-0.41 + random.uniform(0,0.01)) and y_args < (-0.37 + random.uniform(0,0.03))):
       temp = random.randint(0,3)
       if(temp == 0):
         return color(190,194,196) 
@@ -552,9 +619,48 @@ class Render(object):
         return color(195,199,201)
       elif(temp == 3):
         return color(197,201,202)
+      
+    #color 16
+    elif(y_args > (-0.49 + random.uniform(0,0.01)) and y_args < (-0.4 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(112,92,77)
+      elif(temp == 1):
+        return color(122,112,85) #beige
+      elif(temp == 2):
+        return color(127,108,81)
+      elif(temp == 3):
+        return color(117,102,76)
 
+    #color 17
+    elif(y_args > (-0.56 + random.uniform(0,0.01)) and y_args < (-0.48 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(87,78,73) #dark light
+      elif(temp == 1):
+        return color(78,72,63)
+      elif(temp == 2):
+        return color(82,74,69)
+      elif(temp == 3):
+        return color(104,90,73)
 
-  def stars(self):
+    #color 18
+    elif(y_args < (-0.55 + random.uniform(0,0.01))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(77,68,63) #dark light
+      elif(temp == 1):
+        return color(65,57,52) #dark
+      elif(temp == 2):
+        return color(82,74,69)
+      elif(temp == 3):
+        return color(74,60,63)
+
+  def shader2(self, **kwargs):
+    x_args = kwargs['x_args']
+    y_args = kwargs['y_args']
+
+    return color(1,1,1)
     temp = self.width
 
     while temp > 0:
@@ -575,7 +681,6 @@ class Render(object):
     
       temp -= self.width/50
 
-  
   def triangle(self):
     A = next(self.active_vertex_array)
     B = next(self.active_vertex_array)
@@ -591,7 +696,7 @@ class Render(object):
         nA = next(self.active_vertex_array)
         nC = next(self.active_vertex_array)
 
-  ############################# CALCULOS #############################
+    ############################# CALCULOS #############################
 
     min, max = bounding_box([A.x, B.x, C.x],[A.y, B.y, C.y])
 
@@ -632,7 +737,6 @@ class Render(object):
         except:
           pass
 
-
   def wireframe(self):
     A = next(self.active_vertex_array)
     B = next(self.active_vertex_array)
@@ -646,6 +750,63 @@ class Render(object):
     self.glLine(A.x, A.y,B.x, B.y)
     self.glLine(B.x, B.y,C.x, C.y)
     self.glLine(C.x, C.y,A.x, A.y)
+
+  def random(self):
+    A = next(self.active_vertex_array)
+    B = next(self.active_vertex_array)
+    C = next(self.active_vertex_array)
+
+    temp = random.randint(0,5)
+    temp1 = random.uniform(-0.05,0.05)
+    temp2 = random.uniform(0,5)
+
+    if(temp == 0):
+      x_temp, y_temp = A.x/self.width, A.y/self.height
+      
+      self.current_color = self.active_shader(
+        x_args = x_temp,
+        y_args = y_temp
+      )
+
+      self.glVertex(x_temp,y_temp)
+
+    elif(temp == 1):
+      x_temp, y_temp = B.x/self.width, B.y/self.height
+      
+      self.current_color = self.active_shader(
+        x_args = x_temp,
+        y_args = y_temp
+      )
+
+      self.glVertex(x_temp,y_temp)
+
+    elif(temp == 2):
+      x_temp, y_temp = C.x/self.width, C.y/self.height
+      
+      self.current_color = self.active_shader(
+        x_args = x_temp,
+        y_args = y_temp
+      )
+
+      self.glVertex(x_temp,y_temp)
+
+  def stars(self):
+    temp = self.width
+    while temp > 0:
+      x = random.randint(0, self.width)
+      y = random.randint(0, self.height)
+      try:
+        self.pixels[x][y] = WHITE
+        self.pixels[x+1][y] = WHITE
+        self.pixels[x-1][y] = WHITE
+        self.pixels[x][y+1] = WHITE
+        self.pixels[x][y-1] = WHITE
+        self.pixels[x+1][y+1] = WHITE
+        self.pixels[x-1][y-1] = WHITE
+      except:
+        pass
+    
+      temp -= self.width/100
 
   def transform_vertex(self, vertex):
     augmented_vertex = [
@@ -814,3 +975,12 @@ class Render(object):
                 self.wireframe()
         except StopIteration:
             print("terminado")
+    if polygon == 'RANDOM':
+        try:
+            while True:
+                self.random()
+        except StopIteration:
+            print("terminado")
+
+    self.vertex_buffer_object = []
+    self.active_vertex_array = []
