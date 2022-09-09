@@ -7,20 +7,18 @@ def glpoint():
 
     r.glCreateWindow(500,500)
 
-    r.glClearColor(1,1,1) #parametros en rango de 0 a 1
+    r.glClearColor(0,0,0) #parametros en rango de 0 a 1
     r.glClear()
 
     r.glViewPort(0,0,500,500) 
 
-    r.glColor(1,1,1) #parametros en rango de 0 a 1
-
-    t.read('./models/apple.bmp')
-    r.active_texture = t
+    r.glColor(0,0,0) #parametros en rango de 0 a 1
+    
     r.active_shader = r.shader
 
     #------------------ORIGINAL
     r.lookAt(eye=[0,0,1],center=[0,0,0],up=[0,1,0])
-    r.glLoad('./models/apple.obj', translate=(-1,-1.5,0), scale=(0.05,0.05,0.05), rotate=(0,0,0), texture=t)
+    r.glLoad('./models/sphere.obj', translate=(-1,-1,0), scale=(5,5,5), rotate=(0,0,0))
 
     r.draw('TRIANGLES')
     r.glFinish()

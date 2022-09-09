@@ -5,6 +5,7 @@
 
 from logging import raiseExceptions
 from collections import namedtuple
+import random
 import struct
 from math import *
 
@@ -24,7 +25,10 @@ def dword(d):
   return struct.pack('=l', d)
 
 def color(r, g, b):
-  return bytes([int(b*255), int(g*255), int(r*255)])
+  if r <= 1 and g <= 1 and b <= 1:
+    return bytes([int(b * 255), int(g * 255), int(r * 255)])
+  else:
+    return bytes([b, g, r])
 
 # ========== VECTOR =========
 V3 = namedtuple('P3', ['x', 'y', 'z'])
@@ -345,7 +349,7 @@ class Render(object):
       x += self.inc
 
   def shader(self, **kwargs):
-    w, u, v = kwargs['bar']
+    """w, u, v = kwargs['bar']
     L = kwargs['light']
     A, B, C = kwargs['vertices']
     tA, tB, tC = kwargs['texture_coords']
@@ -361,7 +365,136 @@ class Render(object):
         tx = tA.x * w + tB.x * u + tC.x * v
         ty = tA.y * w + tB.y * u + tC.y * v
 
-        return self.active_texture.get_color_with_intensity(tx, ty, i)
+        return self.active_texture.get_color_with_intensity(tx, ty, i)"""
+
+    x_args = kwargs['x_args']
+    y_args = kwargs['y_args']
+
+    ############################### JUPITER #######################################
+
+    ##color 1
+    if(y_args > (0.60 + random.uniform(0,0.01))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(67,68,63) #dark light
+      elif(temp == 1):
+        return color(55,57,52) #dark
+      elif(temp == 2):
+        return color(52,54,59)
+      elif(temp == 3):
+        return color(64,60,63)
+      
+    
+    #color 2
+    elif(y_args > (0.55 + random.uniform(0,0.01)) and y_args < (0.61 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(77,78,73) #dark light
+      elif(temp == 1):
+        return color(68,72,63)
+      elif(temp == 2):
+        return color(72,74,69)
+      elif(temp == 3):
+        return color(94,90,73)
+      
+    #color 3
+    elif(y_args > (0.49 + random.uniform(0,0.01)) and y_args < (0.56 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(102,92,77)
+      elif(temp == 1):
+        return color(112,112,85) #beige
+      elif(temp == 2):
+        return color(117,108,81)
+      elif(temp == 3):
+        return color(107,102,76)
+
+    #color 4
+    elif(y_args > (0.42 + random.uniform(0,0.01)) and y_args < (0.50 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(129,120,96) 
+      elif(temp == 1):
+        return color(122,112,85)
+      elif(temp == 2):
+        return color(122,108,81)
+      elif(temp == 3):
+        return color(112,102,76)
+
+    #color 5
+    elif(y_args > (0.36 + random.uniform(0,0.01)) and y_args < (0.43 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(139,130,106) 
+      elif(temp == 1):
+        return color(158,137,116)
+      elif(temp == 2):
+        return color(133,120,102)
+      elif(temp == 3):
+        return color(132,122,95)
+
+    #color 6
+    elif(y_args > (0.33 + random.uniform(0,0.01)) and y_args < (0.37 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(139,130,106) 
+      elif(temp == 1):
+        return color(158,137,116)
+      elif(temp == 2):
+        return color(169,133,107)
+      elif(temp == 3):
+        return color(155,109,91)
+    
+    #color 7
+    elif(y_args > (0.29 + random.uniform(0,0.01)) and y_args < (0.34 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(190,194,196) 
+      elif(temp == 1):
+        return color(209,195,178)
+      elif(temp == 2):
+        return color(195,199,201)
+      elif(temp == 3):
+        return color(197,201,202)
+
+    #color 8
+    elif(y_args > (0.23 + random.uniform(0,0.01)) and y_args < (0.35 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(223,200,176) 
+      elif(temp == 1):
+        return color(207,174,146)
+      elif(temp == 2):
+        return color(189,153,127)
+      elif(temp == 3):
+        return color(217,162,129)
+
+    #color 9
+    elif(y_args > (0.20 + random.uniform(0,0.01)) and y_args < (0.24 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(190,194,196) 
+      elif(temp == 1):
+        return color(209,195,178)
+      elif(temp == 2):
+        return color(195,199,201)
+      elif(temp == 3):
+        return color(197,201,202)
+
+    #color 10 - reds
+    elif(y_args > (0.09 + random.uniform(0,0.01)) and y_args < (0.21 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(219,138,105) 
+      elif(temp == 1):
+        return color(207,174,146)
+      elif(temp == 2):
+        return color(189,153,127)
+      elif(temp == 3):
+        return color(217,162,129)
+
+  
+     ############################### LUNA #######################################
   
   def triangle(self):
     A = next(self.active_vertex_array)
@@ -402,13 +535,19 @@ class Render(object):
           
             self.zbuffer[tempx][tempy] = z
 
-            self.current_color = self.active_shader(
+            """self.current_color = self.active_shader(
               bar = (w,u,v),
               vertices=(A,B,C),
               texture_coords = (tA,tB,tC),
               normals = (nA,nB,nC),
               light = self.light
+            )"""
+
+            self.current_color = self.active_shader(
+              x_args = x_temp,
+              y_args = y_temp
             )
+
             self.glVertex(x_temp,y_temp)
         except:
           pass
