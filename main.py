@@ -12,8 +12,10 @@ def glpoint():
 
     r.glViewPort(0,0,500,500) 
 
-    r.glColor(0,0,0) #parametros en rango de 0 a 1
+    r.glColor(1,1,1) #parametros en rango de 0 a 1
     
+    r.stars()
+
     r.active_shader = r.shader
 
     #------------------ORIGINAL

@@ -376,62 +376,62 @@ class Render(object):
     if(y_args > (0.60 + random.uniform(0,0.01))):
       temp = random.randint(0,3)
       if(temp == 0):
-        return color(67,68,63) #dark light
+        return color(77,68,63) #dark light
       elif(temp == 1):
-        return color(55,57,52) #dark
+        return color(65,57,52) #dark
       elif(temp == 2):
-        return color(52,54,59)
+        return color(82,74,69)
       elif(temp == 3):
-        return color(64,60,63)
+        return color(74,60,63)
       
     
     #color 2
     elif(y_args > (0.55 + random.uniform(0,0.01)) and y_args < (0.61 + random.uniform(0,0.02))):
       temp = random.randint(0,3)
       if(temp == 0):
-        return color(77,78,73) #dark light
+        return color(87,78,73) #dark light
       elif(temp == 1):
-        return color(68,72,63)
+        return color(78,72,63)
       elif(temp == 2):
-        return color(72,74,69)
+        return color(82,74,69)
       elif(temp == 3):
-        return color(94,90,73)
+        return color(104,90,73)
       
     #color 3
     elif(y_args > (0.49 + random.uniform(0,0.01)) and y_args < (0.56 + random.uniform(0,0.02))):
       temp = random.randint(0,3)
       if(temp == 0):
-        return color(102,92,77)
+        return color(112,92,77)
       elif(temp == 1):
-        return color(112,112,85) #beige
+        return color(122,112,85) #beige
       elif(temp == 2):
-        return color(117,108,81)
+        return color(127,108,81)
       elif(temp == 3):
-        return color(107,102,76)
+        return color(117,102,76)
 
     #color 4
     elif(y_args > (0.42 + random.uniform(0,0.01)) and y_args < (0.50 + random.uniform(0,0.02))):
       temp = random.randint(0,3)
       if(temp == 0):
-        return color(129,120,96) 
+        return color(139,120,96) 
       elif(temp == 1):
-        return color(122,112,85)
+        return color(132,112,85)
       elif(temp == 2):
-        return color(122,108,81)
+        return color(132,108,81)
       elif(temp == 3):
-        return color(112,102,76)
+        return color(122,102,76)
 
     #color 5
     elif(y_args > (0.36 + random.uniform(0,0.01)) and y_args < (0.43 + random.uniform(0,0.02))):
       temp = random.randint(0,3)
       if(temp == 0):
-        return color(139,130,106) 
+        return color(149,130,106) 
       elif(temp == 1):
-        return color(158,137,116)
+        return color(168,137,116)
       elif(temp == 2):
-        return color(133,120,102)
+        return color(143,120,102)
       elif(temp == 3):
-        return color(132,122,95)
+        return color(142,122,95)
 
     #color 6
     elif(y_args > (0.33 + random.uniform(0,0.01)) and y_args < (0.37 + random.uniform(0,0.02))):
@@ -493,8 +493,88 @@ class Render(object):
       elif(temp == 3):
         return color(217,162,129)
 
-  
-     ############################### LUNA #######################################
+    #color 10 - oranges PRE
+    elif(y_args > (0.06 + random.uniform(0,0.01)) and y_args < (0.10 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(248,200,156) 
+      elif(temp == 1):
+        return color(219,175,126)
+      elif(temp == 2):
+        return color(189,153,127)
+      elif(temp == 3):
+        return color(219,138,105) 
+
+    #color 12 - whites
+    elif(y_args > (-0.06 + random.uniform(0,0.01)) and y_args < (0 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(190,194,196) 
+      elif(temp == 1):
+        return color(209,195,178)
+      elif(temp == 2):
+        return color(195,199,201)
+      elif(temp == 3):
+        return color(197,201,202)
+
+    #color 11 - oranges 
+    elif(y_args > (-0.03 + random.uniform(0,0.03)) and y_args < (0.7 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(248,200,156) 
+      elif(temp == 1):
+        return color(219,175,126)
+      elif(temp == 2):
+        return color(189,153,127)
+      elif(temp == 3):
+        return color(217,162,129)
+
+    #color 12 - reds
+    elif(y_args > (-0.2 + random.uniform(0,0.01)) and y_args < (-0.02 + random.uniform(0,0.02))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(219,138,105) 
+      elif(temp == 1):
+        return color(207,174,146)
+      elif(temp == 2):
+        return color(189,153,127)
+      elif(temp == 3):
+        return color(217,162,129)
+
+     #color 13 - whites
+    elif(y_args > (-0.27 + random.uniform(0,0.01)) and y_args < (-0.19 + random.uniform(0,0.03))):
+      temp = random.randint(0,3)
+      if(temp == 0):
+        return color(190,194,196) 
+      elif(temp == 1):
+        return color(209,195,178)
+      elif(temp == 2):
+        return color(195,199,201)
+      elif(temp == 3):
+        return color(197,201,202)
+
+
+  def stars(self):
+    temp = self.width
+
+    while temp > 0:
+
+      x = random.randint(0, self.width)
+      y = random.randint(0, self.height)
+
+      try:
+        self.pixels[x][y] = WHITE
+        self.pixels[x+1][y] = WHITE
+        self.pixels[x-1][y] = WHITE
+        self.pixels[x][y+1] = WHITE
+        self.pixels[x][y-1] = WHITE
+        self.pixels[x+1][y+1] = WHITE
+        self.pixels[x-1][y-1] = WHITE
+      except:
+        pass
+    
+      temp -= self.width/50
+
   
   def triangle(self):
     A = next(self.active_vertex_array)
