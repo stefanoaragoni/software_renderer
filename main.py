@@ -21,18 +21,27 @@ def glpoint():
     r.pixels = t.pixels
 
     #------------------ORIGINAL
-    """modelo 1 (10/50)
-    t.read('./models/grass.bmp')
+    """complejidad del modelo más complejo (dinosaurio) (20/20)"""
+    """estética de la escena (esta bien bonito, cuenta la historia del fin de los dinos) (20/20)"""
+
+    """modelo 1 (10/50)"""
+    t.read('./models/horse.bmp')
     r.active_texture = t
     r.active_shader = r.shader
-    r.glLoad('./models/grass.obj', translate=(-1,-5,0), scale=(1,1,1), rotate=(0,20,0), texture=t)
-    r.draw('TRIANGLES')"""
+    r.glLoad('./models/horse.obj', translate=(2,-4.2,0), scale=(0.6,0.6,0.6), rotate=(0,-19.5,0), texture=t)
+    r.draw('TRIANGLES')
+
+    r.glLoad('./models/horse.obj', translate=(-3,-2.3,0), scale=(0.15,0.15,0.15), rotate=(0,-18,0), texture=t)
+    r.draw('TRIANGLES')
 
     """modelo 2 (20/50)"""
     t.read('./models/tree.bmp')
     r.active_texture = t
     r.active_shader = r.shader
-    r.glLoad('./models/tree.obj', translate=(-5,-4,0), scale=(0.15,0.15,0.15), rotate=(0,20,0), texture=t)
+    r.glLoad('./models/tree.obj', translate=(-5,-4,0), scale=(0.18,0.20,0.18), rotate=(0,20,0), texture=t)
+    r.draw('TRIANGLES')
+
+    r.glLoad('./models/tree.obj', translate=(2,-2,0), scale=(0.01,0.01,0.01), rotate=(0,70,0), texture=t)
     r.draw('TRIANGLES')
    
     """modelo 3 (30/50)"""
@@ -46,10 +55,8 @@ def glpoint():
     t.read('./models/trex.bmp')
     r.active_texture = t
     r.active_shader = r.shader
-    r.glLoad('./models/trex.obj', translate=(-1,-4,0), scale=(3,3,3), rotate=(0,100,0), texture=t)
+    r.glLoad('./models/trex.obj', translate=(-1,-4.5,0), scale=(4,4,4), rotate=(0,100,0), texture=t)
     r.draw('TRIANGLES')
-
-
 
     r.glFinish()
 

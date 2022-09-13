@@ -5,7 +5,6 @@
 
 from logging import raiseExceptions
 from collections import namedtuple
-import random
 import struct
 from math import *
 
