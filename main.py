@@ -4,6 +4,7 @@ from gl import Render
 def glpoint():
     r = Render()
     t = Texture()
+    t2 = Texture()
 
     r.glCreateWindow(600,600)
 
@@ -21,8 +22,12 @@ def glpoint():
     r.pixels = t.pixels
 
     #------------------ORIGINAL
-    """complejidad del modelo más complejo (dinosaurio) (20/20)"""
-    """estética de la escena (esta bien bonito, cuenta la historia del fin de los dinos) (20/20)"""
+    """total sobre: 110"""
+
+    """(20/20) complejidad del modelo más complejo (dinosaurio)"""
+    """(20/20) estética de la escena (esta bien bonito, cuenta la historia del fin de los dinos)"""
+    """(20/20) Implementar mapas normales o bump mapping (VER DINOSAURIO)"""
+
 
     """modelo 1 (10/50)"""
     t.read('./models/horse.bmp')
@@ -65,8 +70,8 @@ def glpoint():
     t.read('./models/trex.bmp')
     r.active_texture = t
     
-    '''t.read('./models/trexN.bmp') #normal map
-    r.active_normal = t'''
+    t2.read('./models/trexN.bmp') #normal map
+    r.active_normal = t2
 
     r.active_shader = r.shader
     r.glLoad('./models/trex.obj', translate=(-1,-4.5,0), scale=(4,4,4), rotate=(0,100,0), texture=t)

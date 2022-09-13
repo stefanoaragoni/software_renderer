@@ -99,6 +99,7 @@ class Render(object):
     self.vertex_buffer_object = []
     self.active_vertex_array = []
     self.active_texture = None
+    self.active_normal = None
     self.active_shader = None
     self.light = V3(0,0,1)
 
@@ -357,14 +358,53 @@ class Render(object):
     iA = dot(norm(nA),norm(L))
     iB = dot(norm(nB),norm(L))
     iC = dot(norm(nC),norm(L))
-
     i = iA * w + iB * u + iC * v  
 
-    if self.active_texture:
-        tx = tA.x * w + tB.x * u + tC.x * v
-        ty = tA.y * w + tB.y * u + tC.y * v
+    tx = tA.x * w + tB.x * u + tC.x * v
+    ty = tA.y * w + tB.y * u + tC.y * v
 
-        return self.active_texture.get_color_with_intensity(tx, ty, i)
+    #referencia:
+    #https://learnopengl.com/Advanced-Lighting/Normal-Mapping
+
+    if(self.active_normal):
+      nx = nA.x * u + nB.x * v + nC.x * w
+      ny = nA.y * u + nB.y * v + nC.y * w
+      nz = nA.z * u + nB.z * v + nC.z * w
+      normal = V3(nx, ny, nz)
+
+      current_normal = self.active_normal.get_color(tx, ty)
+      current_normal = [ (current_normal[2] / 255) * 2 - 1, (current_normal[1] / 255) * 2 - 1, (current_normal[0] / 255) * 2 - 1]
+      current_normal = norm(V3(*current_normal))
+
+      edge1 = sub(B, A)
+      edge2 = sub(C, A)
+
+      deltaUV1 = sub(tB, tA)
+      deltaUV2 = sub(tC, tA)
+
+      f = 1 / (deltaUV1.x * deltaUV2.y - deltaUV2.x * deltaUV1.y)
+
+      tangent1x = f * (deltaUV2.y * edge1.x - deltaUV1.y * edge2.x)
+      tangent1y = f * (deltaUV2.y * edge1.y - deltaUV1.y * edge2.y)
+      tangent1z = f * (deltaUV2.y * edge1.z - deltaUV1.y * edge2.z)
+      tangent1 = V3(tangent1x,tangent1y,tangent1z)
+
+      bitangent1x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x)
+      bitangent1y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y)
+      bitangent1z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z)
+      bitangent1 = V3(bitangent1x,bitangent1y,bitangent1z)
+
+      tangent = norm(tangent1)
+      bitangent = norm(bitangent1)
+
+      iA = dot(norm(V3(tangent.x,bitangent.x,normal.x)),norm(L))
+      iB = dot(norm(V3(tangent.y,bitangent.y,normal.y)),norm(L))
+      iC = dot(norm(V3(tangent.z,bitangent.z,normal.z)),norm(L))
+      
+      i = iA * w + iB * u + iC * v  
+
+    if self.active_texture:
+      return self.active_texture.get_color_with_intensity(tx, ty, i)
 
   def triangle(self):
     A = next(self.active_vertex_array)
@@ -400,6 +440,7 @@ class Render(object):
         tempy = int(self.y2 + (self.height2/2) + (-y_temp * self.height2/2))
       
         ############################# DIBUJO #############################
+
         try:
           if tempx >= 0 and tempy >= 0 and z > self.zbuffer[tempx][tempy]:
           
@@ -416,6 +457,7 @@ class Render(object):
             self.glVertex(x_temp,y_temp)
         except:
           pass
+
 
   def wireframe(self):
     A = next(self.active_vertex_array)
