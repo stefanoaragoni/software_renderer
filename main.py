@@ -52,11 +52,26 @@ def glpoint():
     r.draw('TRIANGLES')
 
     """modelo 4 (40/50)"""
+    t.read('./models/eagle.bmp')
+    r.active_texture = t
+    r.active_shader = r.shader
+    r.glLoad('./models/eagle.obj', translate=(-3,3,0), scale=(0.005,0.005,0.005), rotate=(20,35,0), texture=t)
+    r.draw('TRIANGLES')
+
+    r.glLoad('./models/eagle.obj', translate=(-2.9,2.9,0), scale=(0.002,0.002,0.002), rotate=(20,35,0), texture=t)
+    r.draw('TRIANGLES')
+    
+    """modelo 5 (50/50)"""
     t.read('./models/trex.bmp')
     r.active_texture = t
+    
+    '''t.read('./models/trexN.bmp') #normal map
+    r.active_normal = t'''
+
     r.active_shader = r.shader
     r.glLoad('./models/trex.obj', translate=(-1,-4.5,0), scale=(4,4,4), rotate=(0,100,0), texture=t)
     r.draw('TRIANGLES')
+    
 
     r.glFinish()
 
