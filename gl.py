@@ -385,9 +385,9 @@ class Render(object):
     ############################# CALCULOS #############################
 
     min, max = bounding_box([A.x, B.x, C.x],[A.y, B.y, C.y])
-
-    for x in range(min.x, max.x+1):
-      for y in range(min.y, max.y+1):
+    
+    for x in range(round(min.x), round(max.x+1)):
+      for y in range(round(min.y), round(max.y+1)):
         w, v, u = barycentric(A.x, A.y, B.x, B.y, C.x, C.y, x, y)
 
         if w < 0 or v < 0 or u < 0: 
